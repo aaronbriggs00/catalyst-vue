@@ -1,7 +1,9 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import PostsShow from "../views/PostsShow.vue";
+import PostsShow from "../views/Posts/PostsShow.vue";
+import PostsIndex from "../views/Posts/PostsIndex.vue";
+import PostsNew from "../views/Posts/PostsNew.vue";
 
 Vue.use(VueRouter);
 
@@ -10,6 +12,16 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/posts/",
+    name: "posts-index",
+    component: PostsIndex,
+  },
+  {
+    path: "/posts/new",
+    name: "posts-new",
+    component: PostsNew,
   },
   {
     path: "/posts/:id",
