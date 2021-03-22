@@ -1,13 +1,23 @@
 <template>
-  <div>
+  <div id="replyIndentationPlaceHolder">
     <span
-      >{{ indentation }}{{ child.value }} created at:
+      >{{ "-------".repeat(indentation) }} {{ child.value }} created at:
       {{ child.created_at }}</span
     >
     <input type="text" v-model="value" />
     <button v-on:click="reply()">reply</button>
+    <button v-on:click="edit()">edit</button>
+    <p v-if="editing">{{ child }}</p>
     <child
+      v-if="!updatePerformed"
       v-for="child in child.children"
+      v-bind:child="child"
+      v-bind:key="child.id"
+      v-bind:indentation="indentation + 1"
+    ></child>
+    <child
+      v-if="updatePerformed"
+      v-for="child in arrayAfterReply"
       v-bind:child="child"
       v-bind:key="child.id"
       v-bind:indentation="indentation + 1"
@@ -15,7 +25,11 @@
   </div>
 </template>
 
-<style></style>
+<style>
+#replyIndentationPlaceHolder {
+  text-align: left;
+}
+</style>
 
 <script>
 import axios from "axios";
@@ -23,11 +37,31 @@ import axios from "axios";
 export default {
   props: ["child", "indentation"],
   name: "child",
+  computed: {
+    arrayAfterReply: function() {
+      if (this.newReply) {
+        return this.child.children.concat({
+          id: this.newReply.id,
+          value: this.newReply.value,
+          parent_id: this.newReply.id,
+          post_id: this.newReply.post_id,
+          created_at: this.newReply.created_at,
+          updated_at: this.newReply.updated_at,
+          children: [],
+        });
+      } else {
+        return this.child.children;
+      }
+    },
+  },
   data: function() {
     return {
       message: "I'm from a component",
+      updatePerformed: false,
+      newReply: null,
       value: null,
       count: 0,
+      editing: false,
     };
   },
   created: function() {},
@@ -41,12 +75,16 @@ export default {
       axios
         .post(`/api/comments`, formData)
         .then((response) => {
-          console.log(response);
-          this.$router.push(`/posts/${response.data.post_id}`);
+          this.newReply = response.data;
         })
         .catch((error) => {
           this.errors = error.response.data.errors;
         });
+      this.updatePerformed = true;
+      this.value = null;
+    },
+    edit: function() {
+      this.editing = !this.editing;
     },
   },
 };

@@ -3,9 +3,11 @@
     <h1>{{ post.title }}</h1>
     <h3>{{ post.text }}</h3>
     <h1>~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~</h1>
+    <textarea v-model="value" cols="60" rows="10"></textarea>
+    <button v-on:click="reply()">reply</button>
     <div>
       <Child
-        v-for="child in post.children"
+        v-for="child in arrayAfterReply.children"
         v-bind:child="child"
         v-bind:indentation="0"
         v-bind:key="child.id"
@@ -24,11 +26,17 @@ export default {
   components: {
     Child,
   },
+  computed: {
+    arrayAfterReply: function() {
+      return this.post;
+    },
+  },
   data: function() {
     return {
       postDataLoaded: false,
       post: [],
-      testArray: [1, 2, 3, 4, 5],
+      value: "",
+      newReply: [],
     };
   },
   created: function() {
@@ -41,6 +49,28 @@ export default {
         this.post = response.data;
         this.postDataLoaded = true;
       });
+    },
+    reply: function() {
+      var formData = new FormData();
+      formData.append("value", this.value);
+      formData.append("post_id", this.$route.params.id);
+      axios
+        .post(`/api/comments`, formData)
+        .then((response) => {
+          this.newReply = response.data;
+          this.post.children.push({
+            id: this.newReply.id,
+            value: this.newReply.value,
+            parent_id: this.newReply.id,
+            post_id: this.newReply.post_id,
+            created_at: this.newReply.created_at,
+            updated_at: this.newReply.updated_at,
+            children: [],
+          });
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
     },
   },
 };
