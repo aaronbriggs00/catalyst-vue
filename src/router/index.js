@@ -2,8 +2,9 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import PostsShow from "../views/Posts/PostsShow.vue";
-import PostsIndex from "../views/Posts/PostsIndex.vue";
 import PostsNew from "../views/Posts/PostsNew.vue";
+import BoardsShow from "../views/Boards/BoardsShow.vue";
+import BoardsIndex from "../views/Boards/BoardsIndex.vue";
 
 Vue.use(VueRouter);
 
@@ -14,19 +15,24 @@ const routes = [
     component: Home,
   },
   {
-    path: "/posts/",
-    name: "posts-index",
-    component: PostsIndex,
-  },
-  {
-    path: "/posts/new",
+    path: "/boards/:boardTitle/posts/new",
     name: "posts-new",
     component: PostsNew,
   },
   {
-    path: "/posts/:id",
+    path: "/boards/:boardTitle/posts/:id",
     name: "posts-show",
     component: PostsShow,
+  },
+  {
+    path: "/boards/:boardTitle",
+    name: "boards-show",
+    component: BoardsShow,
+  },
+  {
+    path: "/boards",
+    name: "boards-index",
+    component: BoardsIndex,
   },
   {
     path: "/about",

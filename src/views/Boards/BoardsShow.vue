@@ -1,7 +1,11 @@
 <template>
-  <div class="posts-index">
+  <div class="boards-show">
     <Post v-for="post in posts" v-bind:post="post" v-bind:key="post.id" />
-    <router-link to="/posts/new" tag="button">create new post</router-link>
+    <router-link
+      :to="`/boards/${this.$route.params.boardTitle}/posts/new`"
+      tag="button"
+      >create new post</router-link
+    >
   </div>
 </template>
 
@@ -17,6 +21,7 @@ export default {
   },
   data: function() {
     return {
+      board: [],
       posts: [],
     };
   },
@@ -25,10 +30,13 @@ export default {
   },
   methods: {
     apiCall: function() {
-      axios.get(`/api/posts`).then((response) => {
-        console.log(response.data);
-        this.posts = response.data;
-      });
+      axios
+        .get(`/api/boards/${this.$route.params.boardTitle}`)
+        .then((response) => {
+          console.log(response.data);
+          this.board = response.data;
+          this.posts = this.board.posts;
+        });
     },
   },
 };

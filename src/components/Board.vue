@@ -1,11 +1,7 @@
 <template>
   <div>
-    <router-link
-      :to="`/boards/${this.$route.params.boardTitle}/posts/${post.id}`"
-    >
-      <h1>{{ post.title }}</h1>
-    </router-link>
-    <h4>replies: {{ post.replies }}</h4>
+    <router-link :to="`/boards/${board.title}`">{{ board.title }}</router-link>
+    <p>posts: {{ board.post_count }}</p>
   </div>
 </template>
 
@@ -13,7 +9,7 @@
 
 <script>
 export default {
-  props: ["post"],
+  props: ["board"],
   data: function() {
     return {
       message: "I'm from a component",
