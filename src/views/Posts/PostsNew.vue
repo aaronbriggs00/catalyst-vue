@@ -36,13 +36,6 @@ export default {
   },
   created: function() {},
   methods: {
-    //delete this
-    testButton: function() {
-      console.log(
-        this.boardIdLookup[this.$route.params.boardTitle.toLowerCase()]
-      );
-    },
-    //delete this
     apiPost: function() {
       var formData = new FormData();
       formData.append("title", this.postTitle);

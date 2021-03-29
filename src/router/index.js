@@ -5,6 +5,9 @@ import PostsShow from "../views/Posts/PostsShow.vue";
 import PostsNew from "../views/Posts/PostsNew.vue";
 import BoardsShow from "../views/Boards/BoardsShow.vue";
 import BoardsIndex from "../views/Boards/BoardsIndex.vue";
+import Signup from "../views/UserAuth/Signup.vue";
+import Login from "../views/UserAuth/Login.vue";
+import Logout from "../views/UserAuth/Logout.vue";
 
 Vue.use(VueRouter);
 
@@ -34,6 +37,23 @@ const routes = [
     name: "boards-index",
     component: BoardsIndex,
   },
+  //UserAuth
+  {
+    path: "/signup",
+    name: "signup",
+    component: Signup,
+  },
+  {
+    path: "/login",
+    name: "login",
+    component: Login,
+  },
+  {
+    path: "/logout",
+    name: "logout",
+    component: Logout,
+  },
+  //EndUserAuth
   {
     path: "/about",
     name: "About",
