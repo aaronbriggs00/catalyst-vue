@@ -41,13 +41,12 @@ Version: 1.0
 /* Mobile Media */
 /* End Mobile Media */
 body {
-	background: #161616;
+	background: #edf2f6;
 	font-size: 13px;
 	font-family: 'Ubuntu', sans-serif;
-	color: #ffffff;
 }
 p {
-	color: #aaaaaa;
+	color: #888da8;
 }
 .slick-arrow {
 	&:before {
@@ -107,10 +106,10 @@ p {
 	}
 	.navbar-search {
 		.form-control {
-			background: #121212;
+			background: #132028;
 		}
 		.btn {
-			background: #121212 !important;
+			background: #132028 !important;
 			color: #74828e;
 		}
 	}
@@ -124,17 +123,14 @@ p {
 		border-right: 1px solid #e3e6f0;
 		border-bottom: 1px solid #e3e6f0;
 		line-height: 1.3rem;
-		border-left: 1px solid #3e3e3e;
-		border-right: 1px solid #3e3e3e;
-		border-bottom: 1px solid #3e3e3e;
 	}
 	padding: 0;
 	border: none;
 	overflow: hidden;
 	width: 20rem !important;
 	.dropdown-header {
-		background-color: #161616;
-		border: 1px solid #3e3e3e;
+		background-color: #1d2f38;
+		border: 1px solid #1d2f38;
 		color: #fff;
 		font-weight: 800;
 		font-size: 14px;
@@ -150,7 +146,7 @@ p {
 	}
 }
 .box.border {
-	border: 1px solid #3e3e3e !important;
+	border: 1px solid #ffffff !important;
 }
 .shadow-sm {
 	box-shadow: 0 6px 22px 0 rgba(0,0,0,0.08) !important;
@@ -160,7 +156,7 @@ p {
 		font-size: 14px;
 		font-weight: 500;
 		padding: 1rem !important;
-		color: #ffffff;
+		color: #888da8;
 		position: relative;
 	}
 	.nav-link.active {
@@ -184,8 +180,8 @@ p {
 }
 .osahan-login {
 	.form-control {
-		background: #121212;
-		border-color: #121212;
+		background: #f8fafc;
+		border-color: #eaebec;
 	}
 }
 .icon-form-control {
@@ -608,43 +604,33 @@ div {
 	background-color: #00dffc;
 }
 .border {
-	border: 1px solid #3e3e3e !important;
+	border: 1px solid #eaebec !important;
 }
 .card {
-	border: 1px solid #3e3e3e !important;
+	border: 1px solid #eaebec !important;
 }
 .border-top {
-	border-top: 1px solid #3e3e3e !important;
+	border-top: 1px solid #eaebec !important;
 }
 .border-bottom {
-	border-bottom: 1px solid #3e3e3e !important;
+	border-bottom: 1px solid #eaebec !important;
 }
 .border-left {
-	border-left: 1px solid #3e3e3e !important;
+	border-left: 1px solid #eaebec !important;
 }
 .border-right {
-	border-right: 1px solid #3e3e3e !important;
+	border-right: 1px solid #eaebec !important;
 }
 .list-group-item {
-	border-color: #3e3e3e !important;
-	background-color: #282828;
-}
-.bg-white {
-	background-color: #282828 !important;
-}
-.text-black-50 {
-	color: rgba(255, 255, 255, 0.5) !important;
-}
-.table {
-	color: #aaaaaa;
+	border-color: #eaebec !important;
 }
 .btn-light {
-	color: #aaaaaa;
-	background-color: #2e2e2e;
-	border-color: #aaaaaa;
+	color: #007bff;
+	background-color: #ebf2ff;
+	border-color: #ebf2ff;
 	&:hover {
 		color: #007bff;
-		background-color: #161616;
+		background-color: #ffffff;
 		border-color: #007bff;
 	}
 }
@@ -676,47 +662,32 @@ div {
 }
 .dropdown-menu {
 	border-color: #eaebec;
-	background: #282828;
-	border-color: #3e3e3e;
-	color: #ffffff;
 }
 .dropdown-item {
 	padding: 6px 1rem;
-	color: #ffffff !important;
-	&:hover {
-		color: #ffffff !important;
-		color: #16181b;
-		text-decoration: none;
-		background-color: #161616;
-	}
-	&:focus {
-		color: #16181b;
-		text-decoration: none;
-		background-color: #161616;
-	}
 }
 .btn-outline-secondary {
-	color: #888d8b;
-	border-color: #3e3e3e;
+	color: #b7b9cc;
+	border-color: #b7b9cc;
 	&:hover {
 		color: #ffffff;
-		border-color: #161616;
-		background-color: #161616;
+		border-color: #b7b9cc;
+		background-color: #b7b9cc;
 	}
 	&:focus {
 		color: #ffffff;
-		border-color: #161616;
-		background-color: #161616;
+		border-color: #b7b9cc;
+		background-color: #b7b9cc;
 	}
 }
 .bg-dark {
-	background: #282828 !important;
+	background: #1d2f38 !important;
 }
 .btn {
 	font-size: 14px;
 }
 .text-dark {
-	color: #ffffff !important;
+	color: #1d2f38 !important;
 }
 .small {
 	font-size: 12px;
@@ -762,9 +733,6 @@ small {
 		right: 0;
 		border: .125rem solid #fff;
 	}
-}
-.dropdown-divider {
-	border-top: 1px solid #3e3e3e;
 }
 @media (max-width: 768px) {
 	.osahan-nav-top {

@@ -1,12 +1,86 @@
 <template>
   <div id="replyIndentationPlaceHolder">
-    <span
+    <div :class="`col-md-${12 - indentation} ml-auto`">
+      <div class="box shadow-sm border rounded bg-white mb-1">
+        <div class="box-body p-3">
+          <div id="retro-comments">
+            <div class="reviews-members">
+              <div class="media">
+                <a href="#"
+                  ><img
+                    alt="Generic placeholder image"
+                    src="https://bondprinting.com/wp-content/uploads/2019/03/placeholder-face-big-300x300.png"
+                    class="mr-3"
+                /></a>
+                <div class="media-body">
+                  <div class="reviews-members-header">
+                    <h6 class="mb-1">
+                      <a href="#" class="text-black">{{ child.user_id }} </a>
+                      <small class="text-gray">2 months ago</small>
+                    </h6>
+                  </div>
+                  <div class="reviews-members-body">
+                    <p>
+                      Was here impromptu in their first week, reacthe last
+                      order. Even though they had Chefs in their open kitchen
+                      they weren’t flexible to dish out few more items.
+                    </p>
+                  </div>
+                  <div class="reviews-members-footer d-flex align-items-center">
+                    <a
+                      href="#"
+                      class="total-like btn btn-outline-info btn-sm mr-1"
+                      ><i class="feather-thumbs-up"></i> 123</a
+                    >
+                    <a href="#" class="total-like btn btn-outline-info btn-sm"
+                      ><i class="feather-thumbs-down"></i> 02</a
+                    >
+                    <span class="total-like-user-main ml-2" dir="rtl">
+                      <div class="overlap-rounded-circle">
+                        <img
+                          class="rounded-circle shadow-sm"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title=""
+                          src="img/p13.png"
+                          alt=""
+                          data-original-title="Sophia Lee"
+                        />
+                        <img
+                          class="rounded-circle shadow-sm"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title=""
+                          src="img/p1.png"
+                          alt=""
+                          data-original-title="John Doe"
+                        />
+                        <img
+                          class="rounded-circle shadow-sm"
+                          data-toggle="tooltip"
+                          data-placement="top"
+                          title=""
+                          src="img/p3.png"
+                          alt=""
+                          data-original-title="Robert Cook"
+                        />
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span <!--
       >{{ "-------".repeat(indentation) }} {{ child.value }} created at:
       {{ child.created_at }}</span
     >
     <input type="text" v-model="value" />
     <button v-on:click="reply()">reply</button>
-    <button v-on:click="edit()">edit</button>
+    <button v-on:click="edit()">edit</button> -->
     <p v-if="editing">{{ child }}</p>
     <child
       v-if="!updatePerformed"
