@@ -1,86 +1,75 @@
 <template>
-  <div id="replyIndentationPlaceHolder">
-    <div :class="`col-md-${12 - indentation} ml-auto`">
-      <div class="box shadow-sm border rounded bg-white mb-1">
-        <div class="box-body p-3">
-          <div id="retro-comments">
-            <div class="reviews-members">
-              <div class="media">
-                <a href="#"
-                  ><img
-                    alt="Generic placeholder image"
-                    src="https://bondprinting.com/wp-content/uploads/2019/03/placeholder-face-big-300x300.png"
-                    class="mr-3"
-                /></a>
-                <div class="media-body">
-                  <div class="reviews-members-header">
-                    <h6 class="mb-1">
-                      <a href="#" class="text-black">{{ child.user_id }} </a>
-                      <small class="text-gray">2 months ago</small>
-                    </h6>
-                  </div>
-                  <div class="reviews-members-body">
-                    <p>
-                      Was here impromptu in their first week, reacthe last
-                      order. Even though they had Chefs in their open kitchen
-                      they weren’t flexible to dish out few more items.
-                    </p>
-                  </div>
-                  <div class="reviews-members-footer d-flex align-items-center">
-                    <a
-                      href="#"
-                      class="total-like btn btn-outline-info btn-sm mr-1"
-                      ><i class="feather-thumbs-up"></i> 123</a
-                    >
-                    <a href="#" class="total-like btn btn-outline-info btn-sm"
-                      ><i class="feather-thumbs-down"></i> 02</a
-                    >
-                    <span class="total-like-user-main ml-2" dir="rtl">
-                      <div class="overlap-rounded-circle">
-                        <img
-                          class="rounded-circle shadow-sm"
-                          data-toggle="tooltip"
-                          data-placement="top"
-                          title=""
-                          src="img/p13.png"
-                          alt=""
-                          data-original-title="Sophia Lee"
-                        />
-                        <img
-                          class="rounded-circle shadow-sm"
-                          data-toggle="tooltip"
-                          data-placement="top"
-                          title=""
-                          src="img/p1.png"
-                          alt=""
-                          data-original-title="John Doe"
-                        />
-                        <img
-                          class="rounded-circle shadow-sm"
-                          data-toggle="tooltip"
-                          data-placement="top"
-                          title=""
-                          src="img/p3.png"
-                          alt=""
-                          data-original-title="Robert Cook"
-                        />
-                      </div>
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <div>
+    <div :class="`reviews-members col-sm-${11 - indentation} ml-auto`">
+      <div class="media">
+        <a href="#"
+          ><img
+            class="mr-3"
+            src="https://merics.org/sites/default/files/styles/ct_team_member_default/public/2020-04/avatar-placeholder.png?itok=Vhm0RCa3"
+            alt="Generic placeholder image"
+        /></a>
+        <div class="media-body">
+          <div class="reviews-members-header">
+            <h6 class="mb-1">
+              <a class="text-black" href="#">{{ child.author }}</a>
+              <small class="text-gray"> 2 days ago</small>
+            </h6>
+          </div>
+          <div class="reviews-members-body">
+            <p>{{ child.value }}</p>
+          </div>
+          <div class="reviews-members-footer d-flex align-items-center">
+            <a class="total-like btn btn-outline-info btn-sm mr-1" href="#"
+              ><i class="feather-thumbs-up"></i> 123</a
+            >
+            <a class="total-like btn btn-outline-info btn-sm" href="#"
+              ><i class="feather-thumbs-down"></i> 02</a
+            >
+            <span class="ml-auto"
+              ><button
+                v-if="!showReplyDiv"
+                v-on:click="showReplyDiv = true"
+                class="btn btn-light btn-sm ml-1"
+              >
+                reply
+              </button>
+              <button class="btn btn-light btn-sm ml-1">report</button></span
+            >
+          </div>
+          <div v-if="showReplyDiv" class="form-members-body mt-2">
+            <textarea
+              v-model="value"
+              rows="4"
+              placeholder="Add a public comment..."
+              class="form-control"
+            ></textarea>
+          </div>
+          <div
+            v-if="showReplyDiv"
+            class="reviews-members-footer d-flex align-items-center mt-1"
+          >
+            <span class="ml-auto"
+              ><button
+                v-on:click="
+                  reply();
+                  showReplyDiv = false;
+                "
+                class="btn btn-light btn-sm ml-1"
+              >
+                submit
+              </button>
+              <button
+                v-on:click="showReplyDiv = false"
+                class="btn btn-light btn-sm ml-1"
+              >
+                cancel
+              </button></span
+            >
           </div>
         </div>
       </div>
     </div>
-    <span <!--
-      >{{ "-------".repeat(indentation) }} {{ child.value }} created at:
-      {{ child.created_at }}</span
-    >
-    <input type="text" v-model="value" />
-    <button v-on:click="reply()">reply</button>
-    <button v-on:click="edit()">edit</button> -->
+
     <p v-if="editing">{{ child }}</p>
     <child
       v-if="!updatePerformed"
@@ -136,10 +125,14 @@ export default {
       value: null,
       count: 0,
       editing: false,
+      showReplyDiv: false,
     };
   },
   created: function() {},
   methods: {
+    toggleReplyDiv: function() {
+      this.showReplyDiv = !this.showReplyDiv;
+    },
     reply: function(id, data) {
       var formData = new FormData();
       formData.append("value", this.value);
