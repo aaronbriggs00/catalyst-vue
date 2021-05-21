@@ -19,12 +19,21 @@
             <p>{{ child.value }}</p>
           </div>
           <div class="reviews-members-footer d-flex align-items-center">
-            <a class="total-like btn btn-outline-info btn-sm mr-1" href="#"
-              ><i class="feather-thumbs-up"></i> 123</a
+            <button
+              v-on:click="vote(-1, child.id)"
+              type="button"
+              class="btn btn-dark btn-sm rounded"
             >
-            <a class="total-like btn btn-outline-info btn-sm" href="#"
-              ><i class="feather-thumbs-down"></i> 02</a
+              <i class="feather-chevrons-down"></i>
+            </button>
+            <span>{{ childScore }}</span>
+            <button
+              v-on:click="vote(1, child.id)"
+              type="button"
+              class="btn btn-light btn-sm rounded"
             >
+              <i class="feather-chevrons-up"></i>
+            </button>
             <span class="ml-auto"
               ><button
                 v-if="!showReplyDiv"
@@ -126,10 +135,25 @@ export default {
       count: 0,
       editing: false,
       showReplyDiv: false,
+      childScore: this.child.score,
     };
   },
   created: function() {},
   methods: {
+    vote: function(value, id) {
+      var params = {
+        comment_id: id,
+        value: value,
+      };
+      axios
+        .post("/api/votes", params)
+        .then((response) => {
+          this.childScore += value;
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
+    },
     toggleReplyDiv: function() {
       this.showReplyDiv = !this.showReplyDiv;
     },

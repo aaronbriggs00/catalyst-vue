@@ -3,7 +3,7 @@
     <div class="col-sm-1"></div>
     <div class="col-sm-8 box shadow-sm border rounded bg-white mb-3 ml-1">
       <div class="box-title border-bottom p-3">
-        <h6 class="m-0">Careers at Google</h6>
+        <h6 class="m-0">{{ post.title }}</h6>
       </div>
       <div class="box-body p-3">
         <p>

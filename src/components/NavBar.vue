@@ -354,16 +354,25 @@
                   <div class="status-indicator bg-success"></div>
                 </div>
                 <div class="font-weight-bold">
-                  <div class="text-truncate">Gurdeep Osahan</div>
+                  <div class="text-truncate">
+                    {{ UserName }}
+                  </div>
                   <div class="small text-gray-500">UI/UX Designer</div>
                 </div>
               </div>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="profile.html"
-                ><i class="feather-edit mr-1"></i> My Account</a
+                ><i class="feather-user mr-1"></i> My Account</a
               >
-              <a class="dropdown-item" href="edit-profile.html"
-                ><i class="feather-user mr-1"></i> Edit Profile</a
+              <router-link to="/home">
+                <a class="dropdown-item" href="edit-profile.html"
+                  ><i class="feather-edit mr-1"></i> Edit Profile</a
+                ></router-link
+              >
+              <router-link to="/subscriptions">
+                <a class="dropdown-item" href="edit-profile.html"
+                  ><i class="feather-bookmark mr-1"></i> Manage Subscriptions
+                </a></router-link
               >
               <div class="dropdown-divider"></div>
               <router-link to="/logout"
@@ -402,7 +411,7 @@
 
 <script>
 export default {
-  props: ["isLoggedIn"],
+  props: ["isLoggedIn", "UserId", "UserName"],
   data: function() {
     return { message: "message" };
   },
@@ -416,14 +425,6 @@ export default {
       }
     },
   },
-  computed: {
-    // isLoggedIn: function() {
-    //   if (localStorage.getItem("jwt")) {
-    //     return true;
-    //   } else {
-    //     return false;
-    //   }
-    // },
-  },
+  computed: {},
 };
 </script>

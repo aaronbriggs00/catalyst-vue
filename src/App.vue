@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <NavBar v-bind:isLoggedIn="isLoggedIn()" />
+    <NavBar
+      v-bind:isLoggedIn="isLoggedIn()"
+      v-bind:UserId="getUserId()"
+      v-bind:UserName="getUserName()"
+    />
     <router-view />
   </div>
 </template>
@@ -29,6 +33,9 @@ export default {
     },
     getUserId: function() {
       return parseInt(localStorage.getItem("user_id"));
+    },
+    getUserName: function() {
+      return String(localStorage.getItem("user_name"));
     },
   },
 };
