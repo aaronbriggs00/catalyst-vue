@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <h1>TESTING</h1>
     <div class="row" v-if="$parent.isLoggedIn()">
       <div class="col col-xl-2"></div>
       <main

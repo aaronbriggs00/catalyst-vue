@@ -162,7 +162,7 @@
               class="box mb-3 shadow-sm border rounded bg-white list-sidebar"
             >
               <div class="box-title p-3">
-                <h6 class="m-0">Manage my network</h6>
+                <h6 class="m-0">Temporary Side Panel</h6>
               </div>
               <ul class="list-group list-group-flush">
                 <a href="#">
