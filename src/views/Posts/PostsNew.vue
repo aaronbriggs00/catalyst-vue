@@ -25,11 +25,15 @@ export default {
       boardIdLookup: {
         biology: 1,
         chemistry: 2,
-        physiology: 3,
-        geology: 4,
-        physics: 5,
-        mathematics: 6,
-        statistics: 7,
+        physics: 3,
+        computer_science: 4,
+        mathematics: 5,
+        statistics: 6,
+        biochemistry: 7,
+        geology: 8,
+        thermodynamics: 9,
+        cell_biology: 10,
+        epidemiology: 11,
       },
       //EVENTUALLY FIX THIS
     };

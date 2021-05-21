@@ -74,11 +74,15 @@ export default {
       boardTitleLookup: {
         1: "biology",
         2: "chemistry",
-        3: "physiology",
-        4: "geology",
-        5: "physics",
-        6: "mathematics",
-        7: "statistics",
+        3: "physics",
+        4: "computer science",
+        5: "mathematics",
+        6: "statistics",
+        7: "biochemistry",
+        8: "geology",
+        9: "thermodynamics",
+        10: "cell biology",
+        11: "epidemiology",
       },
       //FIX THIS EVENTUALLY
     };
