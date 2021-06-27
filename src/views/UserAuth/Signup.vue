@@ -22,7 +22,7 @@
                       <div class="position-relative icon-form-control">
                         <i class="feather-user position-absolute"></i>
                         <input
-                          v-model="name"
+                          v-model="first_name"
                           type="text"
                           class="form-control"
                         />
@@ -141,7 +141,7 @@ export default {
   data: function() {
     return {
       email: null,
-      name: null,
+      first_name: null,
       last_name: null,
       password: null,
       password_confirmation: null,
@@ -156,7 +156,8 @@ export default {
     signUp: function() {
       var params = {
         email: this.email,
-        name: this.name,
+        first_name: this.first_name,
+        last_name: this.last_name,
         password: this.password,
         password_confirmation: this.password_confirmation,
       };
