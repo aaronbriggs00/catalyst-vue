@@ -4,6 +4,7 @@
       v-bind:isLoggedIn="isLoggedIn()"
       v-bind:UserId="getUserId()"
       v-bind:UserName="getUserName()"
+      v-bind:UserImage="getUserImage()"
     />
     <router-view />
   </div>
@@ -36,6 +37,9 @@ export default {
     },
     getUserName: function() {
       return String(localStorage.getItem("user_name"));
+    },
+    getUserImage: function() {
+      return String(localStorage.getItem("user_image"));
     },
   },
 };

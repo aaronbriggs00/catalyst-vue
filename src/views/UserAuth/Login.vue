@@ -123,7 +123,11 @@ export default {
             "Bearer " + response.data.jwt;
           localStorage.setItem("jwt", response.data.jwt);
           localStorage.setItem("user_id", response.data.user_id);
-          localStorage.setItem("user_name", response.data.user_name);
+          localStorage.setItem(
+            "user_name",
+            response.data.user_first_name + " " + response.data.user_last_name
+          );
+          localStorage.setItem("user_image", response.data.user_image);
           localStorage.setItem("logged_in", true);
           this.$router.push("/");
         })

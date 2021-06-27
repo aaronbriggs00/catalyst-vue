@@ -12,6 +12,7 @@ export default {
     localStorage.removeItem("user_id");
     localStorage.removeItem("user_name");
     localStorage.removeItem("logged_in");
+    localStorage.removeItem("user_image");
     this.$router.push("/");
   },
 };

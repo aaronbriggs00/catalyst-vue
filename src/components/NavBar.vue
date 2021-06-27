@@ -3,7 +3,11 @@
     <nav class="navbar navbar-expand navbar-dark bg-dark osahan-nav-top p-0">
       <div class="container">
         <router-link to="/">
-          <a class="navbar-brand mr-2"><img src="img/logo.svg" alt="" /> </a
+          <a class="navbar-brand mr-2"
+            ><img
+              src="https://i.pinimg.com/736x/91/4d/e6/914de662ac57138cda4a401ff37b444e.jpg  "
+              alt=""
+            /> </a
         ></router-link>
         <!-- search box -->
         <form
@@ -344,13 +348,13 @@
               aria-haspopup="true"
               aria-expanded="false"
             >
-              <img class="img-profile rounded-circle" src="img/p13.png" />
+              <img class="img-profile rounded-circle" :src="UserImage" />
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow-sm">
               <div class="p-3 d-flex align-items-center">
                 <div class="dropdown-list-image mr-3">
-                  <img class="rounded-circle" src="img/user.png" alt="" />
+                  <img class="rounded-circle" :src="UserImage" alt="" />
                   <div class="status-indicator bg-success"></div>
                 </div>
                 <div class="font-weight-bold">
@@ -361,11 +365,13 @@
                 </div>
               </div>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="profile.html"
-                ><i class="feather-user mr-1"></i> My Account</a
+              <router-link :to="`/users/${UserId}`">
+                <a class="dropdown-item" href="profile.html"
+                  ><i class="feather-user mr-1"></i> My Account</a
+                ></router-link
               >
-              <router-link to="/home">
-                <a class="dropdown-item" href="edit-profile.html"
+              <router-link :to="`/users/${UserId}/edit`">
+                <a class="dropdown-item"
                   ><i class="feather-edit mr-1"></i> Edit Profile</a
                 ></router-link
               >
@@ -411,7 +417,7 @@
 
 <script>
 export default {
-  props: ["isLoggedIn", "UserId", "UserName"],
+  props: ["isLoggedIn", "UserId", "UserName", "UserImage"],
   data: function() {
     return { message: "message" };
   },

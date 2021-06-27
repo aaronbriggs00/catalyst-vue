@@ -8,6 +8,8 @@ import BoardsIndex from "../views/Boards/BoardsIndex.vue";
 import Signup from "../views/UserAuth/Signup.vue";
 import Login from "../views/UserAuth/Login.vue";
 import Logout from "../views/UserAuth/Logout.vue";
+import Profile from "../views/Profile/Profile.vue";
+import ProfileEdit from "../views/Profile/ProfileEdit.vue";
 
 Vue.use(VueRouter);
 
@@ -54,6 +56,18 @@ const routes = [
     component: Logout,
   },
   //EndUserAuth
+  //Profile
+  {
+    path: "/users/:id",
+    name: "profile",
+    component: Profile,
+  },
+  {
+    path: "/users/:id/edit",
+    name: "profile-edit",
+    component: ProfileEdit,
+  },
+  //EndProfile
   {
     path: "/about",
     name: "About",
