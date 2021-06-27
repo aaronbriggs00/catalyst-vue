@@ -1,6 +1,5 @@
 <template>
   <div class="profile-edit">
-    {{ user }}
     <div class="py-4">
       <div class="container">
         <div class="row">
@@ -47,7 +46,7 @@
               <div class="box-title border-bottom p-3">
                 <h6 class="m-0">About</h6>
                 <p class="mb-0 mt-0 small">
-                  Tell about yourself in two sentences.
+                  Tell everyone about yourself in a few sentences.
                 </p>
               </div>
               <div class="box-body">
@@ -64,34 +63,12 @@
                       ></textarea>
                     </div>
                   </div>
-                  <div class="form-group mb-0">
-                    <label class="mb-1 w-100">SKILLS</label>
-                    <div class="custom-control custom-checkbox d-inline mr-3">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customCheck1"
-                      />
-                      <label class="custom-control-label" for="customCheck1"
-                        >JavaScript, jQuery</label
-                      >
-                    </div>
-                    <div class="custom-control custom-checkbox d-inline">
-                      <input
-                        type="checkbox"
-                        class="custom-control-input"
-                        id="customCheck2"
-                      />
-                      <label class="custom-control-label" for="customCheck2"
-                        >HTML5, CSS3</label
-                      >
-                    </div>
-                  </div>
                 </div>
                 <div class="overflow-hidden text-center p-3">
                   <a
                     class="font-weight-bold btn btn-light rounded p-3 d-block"
                     href="#"
+                    v-on:click="userSecondaryInfoApiPatch()"
                   >
                     SAVE
                   </a>
@@ -112,7 +89,7 @@
                       class="feather-instagram position-absolute text-warning"
                     ></i>
                     <input
-                      v-model="user.instagram_link"
+                      v-model="instagram_link"
                       placeholder="Add Instagram link"
                       type="text"
                       class="form-control"
@@ -123,7 +100,7 @@
                       class="feather-facebook position-absolute text-primary"
                     ></i>
                     <input
-                      v-model="user.facebook_link"
+                      v-model="facebook_link"
                       placeholder="Add Facebook link"
                       type="text"
                       class="form-control"
@@ -132,7 +109,7 @@
                   <div class="position-relative icon-form-control mb-2">
                     <i class="feather-twitter position-absolute text-info"></i>
                     <input
-                      v-model="user.twitter_link"
+                      v-model="twitter_link"
                       placeholder="Add Twitter link"
                       type="text"
                       class="form-control"
@@ -143,7 +120,7 @@
                       class="feather-youtube position-absolute text-danger"
                     ></i>
                     <input
-                      v-model="user.linkedin_link"
+                      v-model="linkedin_link"
                       placeholder="Add Youtube link"
                       type="text"
                       class="form-control"
@@ -152,7 +129,7 @@
                   <div class="position-relative icon-form-control mb-0">
                     <i class="feather-github position-absolute text-dark"></i>
                     <input
-                      v-model="user.github_link"
+                      v-model="github_link"
                       placeholder="Add Github link"
                       type="text"
                       class="form-control"
@@ -163,6 +140,7 @@
                   <a
                     class="font-weight-bold btn btn-light rounded p-3 d-block"
                     href="#"
+                    v-on:click="socialMediaApiPatch()"
                   >
                     Update Social Profiles
                   </a>
@@ -175,7 +153,7 @@
               <div class="box-title border-bottom p-3">
                 <h6 class="m-0">Edit Basic Info</h6>
                 <p class="mb-0 mt-0 small">
-                  Lorem ipsum dolor sit amet, consecteturs.
+                  Update your profile with the following information.
                 </p>
               </div>
               <div class="box-body p-3">
@@ -254,22 +232,18 @@
                             data-success-class="u-has-success"
                           >
                             <option value="">Select month</option>
-                            <option value="birthMonthSelect1">January</option>
-                            <option value="birthMonthSelect2">February</option>
-                            <option value="birthMonthSelect3">March</option>
-                            <option
-                              value="birthMonthSelect4"
-                              selected="selected"
-                              >April</option
-                            >
-                            <option value="birthMonthSelect5">May</option>
-                            <option value="birthMonthSelect6">June</option>
-                            <option value="birthMonthSelect7">July</option>
-                            <option value="birthMonthSelect8">August</option>
-                            <option value="birthMonthSelect9">September</option>
-                            <option value="birthMonthSelect10">October</option>
-                            <option value="birthMonthSelect11">November</option>
-                            <option value="birthMonthSelect12">December</option>
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4" selected="selected">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
                           </select>
                         </div>
                       </div>
@@ -288,41 +262,37 @@
                             data-success-class="u-has-success"
                           >
                             <option value="">Select date</option>
-                            <option value="birthDateSelect1">1</option>
-                            <option value="birthDateSelect2">2</option>
-                            <option value="birthDateSelect3">3</option>
-                            <option value="birthDateSelect4">4</option>
-                            <option value="birthDateSelect5">5</option>
-                            <option value="birthDateSelect6">6</option>
-                            <option value="birthDateSelect7">7</option>
-                            <option value="birthDateSelect8">8</option>
-                            <option value="birthDateSelect9">9</option>
-                            <option value="birthDateSelect10">10</option>
-                            <option value="birthDateSelect11">11</option>
-                            <option
-                              value="birthDateSelect12"
-                              selected="selected"
-                              >12</option
-                            >
-                            <option value="birthDateSelect13">13</option>
-                            <option value="birthDateSelect14">14</option>
-                            <option value="birthDateSelect15">15</option>
-                            <option value="birthDateSelect16">16</option>
-                            <option value="birthDateSelect17">17</option>
-                            <option value="birthDateSelect18">18</option>
-                            <option value="birthDateSelect19">19</option>
-                            <option value="birthDateSelect20">20</option>
-                            <option value="birthDateSelect21">21</option>
-                            <option value="birthDateSelect22">22</option>
-                            <option value="birthDateSelect23">23</option>
-                            <option value="birthDateSelect24">24</option>
-                            <option value="birthDateSelect25">25</option>
-                            <option value="birthDateSelect26">26</option>
-                            <option value="birthDateSelect27">27</option>
-                            <option value="birthDateSelect28">28</option>
-                            <option value="birthDateSelect29">29</option>
-                            <option value="birthDateSelect30">30</option>
-                            <option value="birthDateSelect31">31</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12" selected="selected">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23">23</option>
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option>
+                            <option value="30">30</option>
+                            <option value="31">31</option>
                           </select>
                         </div>
                       </div>
@@ -341,128 +311,126 @@
                             data-success-class="u-has-success"
                           >
                             <option value="">Select year</option>
-                            <option value="birthYearSelect1900">1900</option>
-                            <option value="birthYearSelect1901">1901</option>
-                            <option value="birthYearSelect1902">1902</option>
-                            <option value="birthYearSelect1903">1903</option>
-                            <option value="birthYearSelect1904">1904</option>
-                            <option value="birthYearSelect1905">1905</option>
-                            <option value="birthYearSelect1906">1906</option>
-                            <option value="birthYearSelect1907">1907</option>
-                            <option value="birthYearSelect1908">1908</option>
-                            <option value="birthYearSelect1909">1909</option>
-                            <option value="birthYearSelect1910">1910</option>
-                            <option value="birthYearSelect1911">1911</option>
-                            <option value="birthYearSelect1912">1912</option>
-                            <option value="birthYearSelect1913">1913</option>
-                            <option value="birthYearSelect1914">1914</option>
-                            <option value="birthYearSelect1915">1915</option>
-                            <option value="birthYearSelect1916">1916</option>
-                            <option value="birthYearSelect1917">1917</option>
-                            <option value="birthYearSelect1918">1918</option>
-                            <option value="birthYearSelect1919">1919</option>
-                            <option value="birthYearSelect1920">1920</option>
-                            <option value="birthYearSelect1921">1921</option>
-                            <option value="birthYearSelect1922">1922</option>
-                            <option value="birthYearSelect1923">1923</option>
-                            <option value="birthYearSelect1924">1924</option>
-                            <option value="birthYearSelect1925">1925</option>
-                            <option value="birthYearSelect1926">1926</option>
-                            <option value="birthYearSelect1927">1927</option>
-                            <option value="birthYearSelect1928">1928</option>
-                            <option value="birthYearSelect1929">1929</option>
-                            <option value="birthYearSelect1930">1930</option>
-                            <option value="birthYearSelect1931">1931</option>
-                            <option value="birthYearSelect1932">1932</option>
-                            <option value="birthYearSelect1933">1933</option>
-                            <option value="birthYearSelect1934">1934</option>
-                            <option value="birthYearSelect1935">1935</option>
-                            <option value="birthYearSelect1936">1936</option>
-                            <option value="birthYearSelect1937">1937</option>
-                            <option value="birthYearSelect1938">1938</option>
-                            <option value="birthYearSelect1939">1939</option>
-                            <option value="birthYearSelect1940">1940</option>
-                            <option value="birthYearSelect1941">1941</option>
-                            <option value="birthYearSelect1942">1942</option>
-                            <option value="birthYearSelect1943">1943</option>
-                            <option value="birthYearSelect1944">1944</option>
-                            <option value="birthYearSelect1945">1945</option>
-                            <option value="birthYearSelect1946">1946</option>
-                            <option value="birthYearSelect1947">1947</option>
-                            <option value="birthYearSelect1948">1948</option>
-                            <option value="birthYearSelect1949">1949</option>
-                            <option value="birthYearSelect1950">1950</option>
-                            <option value="birthYearSelect1951">1951</option>
-                            <option value="birthYearSelect1952">1952</option>
-                            <option value="birthYearSelect1953">1953</option>
-                            <option value="birthYearSelect1954">1954</option>
-                            <option value="birthYearSelect1955">1955</option>
-                            <option value="birthYearSelect1956">1956</option>
-                            <option value="birthYearSelect1957">1957</option>
-                            <option value="birthYearSelect1958">1958</option>
-                            <option value="birthYearSelect1959">1959</option>
-                            <option value="birthYearSelect1960">1960</option>
-                            <option value="birthYearSelect1961">1961</option>
-                            <option value="birthYearSelect1962">1962</option>
-                            <option value="birthYearSelect1963">1963</option>
-                            <option value="birthYearSelect1964">1964</option>
-                            <option value="birthYearSelect1965">1965</option>
-                            <option value="birthYearSelect1966">1966</option>
-                            <option value="birthYearSelect1967">1967</option>
-                            <option value="birthYearSelect1968">1968</option>
-                            <option value="birthYearSelect1969">1969</option>
-                            <option value="birthYearSelect1970">1970</option>
-                            <option value="birthYearSelect1971">1971</option>
-                            <option value="birthYearSelect1972">1972</option>
-                            <option value="birthYearSelect1973">1973</option>
-                            <option value="birthYearSelect1974">1974</option>
-                            <option value="birthYearSelect1975">1975</option>
-                            <option value="birthYearSelect1976">1976</option>
-                            <option value="birthYearSelect1977">1977</option>
-                            <option value="birthYearSelect1978">1978</option>
-                            <option value="birthYearSelect1979">1979</option>
-                            <option value="birthYearSelect1980">1980</option>
-                            <option value="birthYearSelect1981">1981</option>
-                            <option value="birthYearSelect1982">1982</option>
-                            <option value="birthYearSelect1983">1983</option>
-                            <option value="birthYearSelect1984">1984</option>
-                            <option value="birthYearSelect1985">1985</option>
-                            <option
-                              value="birthYearSelect1986"
-                              selected="selected"
+                            <option value="1900">1900</option>
+                            <option value="1901">1901</option>
+                            <option value="1902">1902</option>
+                            <option value="1903">1903</option>
+                            <option value="1904">1904</option>
+                            <option value="1905">1905</option>
+                            <option value="1906">1906</option>
+                            <option value="1907">1907</option>
+                            <option value="1908">1908</option>
+                            <option value="1909">1909</option>
+                            <option value="1910">1910</option>
+                            <option value="1911">1911</option>
+                            <option value="1912">1912</option>
+                            <option value="1913">1913</option>
+                            <option value="1914">1914</option>
+                            <option value="1915">1915</option>
+                            <option value="1916">1916</option>
+                            <option value="1917">1917</option>
+                            <option value="1918">1918</option>
+                            <option value="1919">1919</option>
+                            <option value="1920">1920</option>
+                            <option value="1921">1921</option>
+                            <option value="1922">1922</option>
+                            <option value="1923">1923</option>
+                            <option value="1924">1924</option>
+                            <option value="1925">1925</option>
+                            <option value="1926">1926</option>
+                            <option value="1927">1927</option>
+                            <option value="1928">1928</option>
+                            <option value="1929">1929</option>
+                            <option value="1930">1930</option>
+                            <option value="1931">1931</option>
+                            <option value="1932">1932</option>
+                            <option value="1933">1933</option>
+                            <option value="1934">1934</option>
+                            <option value="1935">1935</option>
+                            <option value="1936">1936</option>
+                            <option value="1937">1937</option>
+                            <option value="1938">1938</option>
+                            <option value="1939">1939</option>
+                            <option value="1940">1940</option>
+                            <option value="1941">1941</option>
+                            <option value="1942">1942</option>
+                            <option value="1943">1943</option>
+                            <option value="1944">1944</option>
+                            <option value="1945">1945</option>
+                            <option value="1946">1946</option>
+                            <option value="1947">1947</option>
+                            <option value="1948">1948</option>
+                            <option value="1949">1949</option>
+                            <option value="1950">1950</option>
+                            <option value="1951">1951</option>
+                            <option value="1952">1952</option>
+                            <option value="1953">1953</option>
+                            <option value="1954">1954</option>
+                            <option value="1955">1955</option>
+                            <option value="1956">1956</option>
+                            <option value="1957">1957</option>
+                            <option value="1958">1958</option>
+                            <option value="1959">1959</option>
+                            <option value="1960">1960</option>
+                            <option value="1961">1961</option>
+                            <option value="1962">1962</option>
+                            <option value="1963">1963</option>
+                            <option value="1964">1964</option>
+                            <option value="1965">1965</option>
+                            <option value="1966">1966</option>
+                            <option value="1967">1967</option>
+                            <option value="1968">1968</option>
+                            <option value="1969">1969</option>
+                            <option value="1970">1970</option>
+                            <option value="1971">1971</option>
+                            <option value="1972">1972</option>
+                            <option value="1973">1973</option>
+                            <option value="1974">1974</option>
+                            <option value="1975">1975</option>
+                            <option value="1976">1976</option>
+                            <option value="1977">1977</option>
+                            <option value="1978">1978</option>
+                            <option value="1979">1979</option>
+                            <option value="1980">1980</option>
+                            <option value="1981">1981</option>
+                            <option value="1982">1982</option>
+                            <option value="1983">1983</option>
+                            <option value="1984">1984</option>
+                            <option value="1985">1985</option>
+                            <option value="1986" selected="selected"
                               >1986</option
                             >
-                            <option value="birthYearSelect1987">1987</option>
-                            <option value="birthYearSelect1988">1988</option>
-                            <option value="birthYearSelect1989">1989</option>
-                            <option value="birthYearSelect1990">1990</option>
-                            <option value="birthYearSelect1991">1991</option>
-                            <option value="birthYearSelect1992">1992</option>
-                            <option value="birthYearSelect1993">1993</option>
-                            <option value="birthYearSelect1994">1994</option>
-                            <option value="birthYearSelect1995">1995</option>
-                            <option value="birthYearSelect1996">1996</option>
-                            <option value="birthYearSelect1997">1997</option>
-                            <option value="birthYearSelect1998">1998</option>
-                            <option value="birthYearSelect1999">1999</option>
-                            <option value="birthYearSelect2000">2000</option>
-                            <option value="birthYearSelect2001">2001</option>
-                            <option value="birthYearSelect2002">2002</option>
-                            <option value="birthYearSelect2003">2003</option>
-                            <option value="birthYearSelect2004">2004</option>
-                            <option value="birthYearSelect2005">2005</option>
-                            <option value="birthYearSelect2006">2006</option>
-                            <option value="birthYearSelect2007">2007</option>
-                            <option value="birthYearSelect2008">2008</option>
-                            <option value="birthYearSelect2009">2009</option>
-                            <option value="birthYearSelect2010">2010</option>
-                            <option value="birthYearSelect2011">2011</option>
-                            <option value="birthYearSelect2012">2012</option>
-                            <option value="birthYearSelect2013">2013</option>
-                            <option value="birthYearSelect2014">2014</option>
-                            <option value="birthYearSelect2015">2015</option>
-                            <option value="birthYearSelect2016">2016</option>
-                            <option value="birthYearSelect2017">2017</option>
+                            <option value="1987">1987</option>
+                            <option value="1988">1988</option>
+                            <option value="1989">1989</option>
+                            <option value="1990">1990</option>
+                            <option value="1991">1991</option>
+                            <option value="1992">1992</option>
+                            <option value="1993">1993</option>
+                            <option value="1994">1994</option>
+                            <option value="1995">1995</option>
+                            <option value="1996">1996</option>
+                            <option value="1997">1997</option>
+                            <option value="1998">1998</option>
+                            <option value="1999">1999</option>
+                            <option value="2000">2000</option>
+                            <option value="2001">2001</option>
+                            <option value="2002">2002</option>
+                            <option value="2003">2003</option>
+                            <option value="2004">2004</option>
+                            <option value="2005">2005</option>
+                            <option value="2006">2006</option>
+                            <option value="2007">2007</option>
+                            <option value="2008">2008</option>
+                            <option value="2009">2009</option>
+                            <option value="2010">2010</option>
+                            <option value="2011">2011</option>
+                            <option value="2012">2012</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                            <option value="2016">2016</option>
+                            <option value="2017">2017</option>
                           </select>
                         </div>
                       </div>
@@ -480,11 +448,12 @@
                             data-error-class="u-has-error"
                             data-success-class="u-has-success"
                           >
-                            <option value="genderSelect1" selected=""
-                              >Male</option
+                            <option value="male" selected="">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                            <option value="null" disabled selected
+                              >Gender</option
                             >
-                            <option value="genderSelect2">Female</option>
-                            <option value="genderSelect3">Other</option>
                           </select>
                         </div>
                       </div>
@@ -578,10 +547,10 @@
                         </label>
                         <div class="form-group">
                           <input
+                            type="text"
                             class="form-control"
-                            type="url"
-                            name="website"
-                            v-model="user.personal_website_link"
+                            name="personal website"
+                            v-model="personal_website_link"
                             placeholder="Enter your website"
                             aria-label="Enter your website"
                             required=""
@@ -648,18 +617,11 @@
                         </div>
                         <div class="mb-3 text-right">
                           <a
-                            class="font-weight-bold btn btn-link rounded p-3"
-                            href="#"
-                          >
-                            &nbsp;&nbsp;&nbsp;&nbsp; Cancel
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                          </a>
-                          <a
                             class="font-weight-bold btn btn-primary rounded p-3"
                             href="#"
                             v-on:click="basicInfoApiPatch()"
                           >
-                            &nbsp;&nbsp;&nbsp;&nbsp; Sava Chenges
+                            &nbsp;&nbsp;&nbsp;&nbsp; Save Changes
                             &nbsp;&nbsp;&nbsp;&nbsp;
                           </a>
                         </div>
@@ -757,9 +719,15 @@ export default {
   data: function() {
     return {
       user: {},
-      date_of_birth_month: "",
-      date_of_birth_day: "",
-      date_of_birth_year: "",
+      personal_website_link: null,
+      twitter_link: null,
+      instagram_link: null,
+      facebook_link: null,
+      linkedin_link: null,
+      github_link: null,
+      date_of_birth_month: null,
+      date_of_birth_day: null,
+      date_of_birth_year: null,
     };
   },
   created: function() {
@@ -770,32 +738,68 @@ export default {
       axios.get(`/api/users/${this.$route.params.id}`).then((response) => {
         console.log(response.data);
         this.user = response.data;
+        this.personal_website_link = response.data.links.personal_website_link;
+        this.twitter_link = response.data.links.twitter_link;
+        this.instagram_link = response.data.links.instagram_link;
+        this.facebook_link = response.data.links.facebook_link;
+        this.linkedin_link = response.data.links.linkedin_link;
+        this.github_link = response.data.links.github_link;
+        this.date_of_birth_year = response.data.date_of_birth.slice(0, 4);
+        this.date_of_birth_month = response.data.date_of_birth.slice(5, 7);
+        this.date_of_birth_day = response.data.date_of_birth.slice(8, 10);
       });
     },
+    socialMediaApiPatch: function() {
+      var params = {
+        instagram_link: this.instagram_link,
+        twitter_link: this.twitter_link,
+        facebook_link: this.facebook_link,
+        linkedin_link: this.linkedin_link,
+        github_link: this.github_link,
+      };
+      axios
+        .patch(`/api/users/${this.$route.params.id}/`, params)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
+    },
+    userSecondaryInfoApiPatch: function() {
+      var params = {
+        bio: this.user.bio,
+      };
+      axios
+        .patch(`/api/users/${this.$route.params.id}/`, params)
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => {
+          this.errors = error.response.data.errors;
+        });
+    },
     basicInfoApiPatch: function() {
-      var formData = new FormData();
-      if (this.user.first_name) {
-        formData.append("first_name", this.user.first_name);
-      } else if (this.user.last_name) {
-        formData.append("last_name", this.user.last_name);
-      } else if (this.user.city) {
-        formData.append("city", this.user.city);
-      } else if (this.user.country) {
-        formData.append("country", this.user.country);
-      } else if (this.user.organization) {
-        formData.append("organization", this.user.organization);
-      } else if (this.user.personal_website_link) {
-        formData.append(
-          "personal_website_link",
-          this.user.personal_website_link
-        );
-      } else if (this.user.preferred_language) {
-        formData.append("preferred_language", this.user.preferred_language);
-      } else if (this.user.phone_number) {
-        formData.append("phone_number", this.user.phone_number);
+      var params = {
+        first_name: this.user.first_name,
+        last_name: this.user.last_name,
+        city: this.user.city,
+        country: this.user.country,
+        organization: this.user.organization,
+        preferred_language: this.user.preferred_language,
+        phone_number: this.user.phone_number,
+        personal_website_link: this.personal_website_link,
+        gender: this.user.gender,
+      };
+      if (
+        this.date_of_birth_year &&
+        this.date_of_birth_month &&
+        this.date_of_birth_day
+      ) {
+        params.date_of_birth = `${this.date_of_birth_year}-${this.date_of_birth_month}-${this.date_of_birth_day}`;
       }
       axios
-        .patch(`/api/users/${this.$route.params.id}/`, formData)
+        .patch(`/api/users/${this.$route.params.id}/`, params)
         .then((response) => {
           console.log(response);
         })
