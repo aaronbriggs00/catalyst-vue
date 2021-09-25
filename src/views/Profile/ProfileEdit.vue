@@ -41,6 +41,7 @@
                   <i class="feather-trash-2"></i>
                 </button>
               </div>
+              <input type="text" v-model="user.image_url" />
             </div>
             <div class="border rounded bg-white mb-3">
               <div class="box-title border-bottom p-3">
@@ -790,6 +791,7 @@ export default {
         phone_number: this.user.phone_number,
         personal_website_link: this.personal_website_link,
         gender: this.user.gender,
+        image_url: this.user.image_url
       };
       if (
         this.date_of_birth_year &&

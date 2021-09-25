@@ -1,41 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <link rel="icon" type="image/png" href="img/fav.png" />
-    <title>Olink - Job Portal & Social Network HTML</title>
-    <!-- Slick Slider -->
-    <link rel="stylesheet" type="text/css" href="vendor/slick/slick.min.css" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="vendor/slick/slick-theme.min.css"
-    />
-    <!-- Feather Icon-->
-    <link href="vendor/icons/feather.css" rel="stylesheet" type="text/css" />
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet" />
-  </head>
-  <body>
-    <!-- Navigation -->
-    <nav
-      class="navbar navbar-expand navbar-light bg-white osahan-nav-top py-4 fixed-top"
-    >
-      <div class="container">
-        <a class="navbar-brand mr-2" href="/"
-          ><img src="img/logo.svg" alt="" />
-          <span class="small ml-3">Home</span>
-        </a>
-      </div>
-    </nav>
+<template>
+  <div class="soon">
     <div class="vh-100 bg-white">
       <div class="container">
         <div class="row align-items-center vh-100">
@@ -465,25 +429,33 @@
             <div class="row">
               <div class="col">
                 <div class="border p-3 rounded text-center mb-2">
-                  <h5 class="font-weight-bold text-primary mb-1">322</h5>
+                  <h5 class="font-weight-bold text-primary mb-1">
+                    {{ displayDays }}
+                  </h5>
                   <p class="mb-0 text-dark">Days</p>
                 </div>
               </div>
               <div class="col">
                 <div class="border p-3 rounded text-center mb-2">
-                  <h5 class="font-weight-bold text-primary mb-1">22</h5>
+                  <h5 class="font-weight-bold text-primary mb-1">
+                    {{ displayHours }}
+                  </h5>
                   <p class="mb-0 text-dark">Hours</p>
                 </div>
               </div>
               <div class="col">
                 <div class="border p-3 rounded text-center mb-2">
-                  <h5 class="font-weight-bold text-primary mb-1">04</h5>
+                  <h5 class="font-weight-bold text-primary mb-1">
+                    {{ displayMinutes }}
+                  </h5>
                   <p class="mb-0 text-dark">Mins</p>
                 </div>
               </div>
               <div class="col">
                 <div class="border p-3 rounded text-center mb-2">
-                  <h5 class="font-weight-bold text-primary mb-1">43</h5>
+                  <h5 class="font-weight-bold text-primary mb-1">
+                    {{ displaySeconds }}
+                  </h5>
                   <p class="mb-0 text-dark">Secs</p>
                 </div>
               </div>
@@ -492,45 +464,60 @@
         </div>
       </div>
     </div>
-    <footer class="bg-white py-4 fixed-bottom">
-      <div class="container">
-        <div class="d-flex justify-content-between align-items-center">
-          <!-- Copyright -->
-          <p class="small text-muted mb-0">© Olink. 2020 wrapbootstrap.</p>
-          <!-- End Copyright -->
-          <!-- Social Networks -->
-          <ul class="list-inline mb-0">
-            <li class="list-inline-item">
-              <a class="btn btn-sm btn-light" href="#">
-                <span class="feather-facebook"></span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="btn btn-sm btn-light" href="#">
-                <span class="feather-youtube"></span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="btn btn-sm btn-light" href="#">
-                <span class="feather-twitter"></span>
-              </a>
-            </li>
-            <li class="list-inline-item">
-              <a class="btn btn-sm btn-light" href="#">
-                <span class="feather-github"></span>
-              </a>
-            </li>
-          </ul>
-          <!-- End Social Networks -->
-        </div>
-      </div>
-    </footer>
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- slick Slider JS-->
-    <script type="text/javascript" src="vendor/slick/slick.min.js"></script>
-    <!-- Custom scripts for all pages-->
-    <script src="js/osahan.js"></script>
-  </body>
-</html>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      displayDays: 0,
+      displayHours: 0,
+      displayMinutes: 0,
+      displaySeconds: 0,
+    };
+  },
+  mounted() {
+    this.showRemaining();
+  },
+  methods: {
+    showRemaining() {
+      const timer = setInterval(() => {
+        const now = new Date();
+        const end = new Date(2022, 2, 10, 10, 10, 10, 10);
+        const distance = end.getTime() - now.getTime();
+
+        if (distance < 0) {
+          clearInterval(timer);
+          return;
+        }
+
+        const days = Math.floor(distance / this._days);
+        const hours = Math.floor((distance % this._days) / this._hours);
+        const minutes = Math.floor((distance % this._hours) / this._minutes);
+        const seconds = Math.floor((distance % this._minutes) / this._seconds);
+        this.displayDays = days < 10 ? "0" + days : days;
+        this.displayHours = hours < 10 ? "0" + hours : hours;
+        this.displayMinutes = minutes < 10 ? "0" + minutes : minutes;
+        this.displaySeconds = seconds < 10 ? "0" + seconds : seconds;
+      }, 1000);
+    },
+  },
+  computed: {
+    _seconds() {
+      return 1000;
+    },
+    _minutes() {
+      return this._seconds * 60;
+    },
+    _hours() {
+      return this._minutes * 60;
+    },
+    _days() {
+      return this._hours * 24;
+    },
+  },
+};
+</script>
+
+<style></style>

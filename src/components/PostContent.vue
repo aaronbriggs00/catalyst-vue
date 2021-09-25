@@ -9,12 +9,66 @@
         <h6 class="m-0">{{ post.title }}</h6>
       </div>
       <div class="box-body p-3">
-        <p>
-          {{ post.text }}
-        </p>
-        <p class="mb-0">
-          extended area/attatchments
-        </p>
+        <quill-editor
+          ref="myQuillEditor"
+          v-model="post.text"
+          :options="editorOptions"
+          :disabled="true"
+        />
+      </div>
+      <div class="row">
+        <div class="card col-2">
+          <img
+            class="card-img-top"
+            src="https://icons-for-free.com/iconfiles/png/512/eps+file+format+pdf+icon-1320167140815183040.png"
+            alt="Card image cap"
+            title=""
+            style=""
+          />
+          <div class="card-body">
+            <h5 class="card-title">file 1</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+        <div class="card col-2">
+          <img
+            class="card-img-top"
+            src="https://icons-for-free.com/iconfiles/png/512/eps+file+format+pdf+icon-1320167140815183040.png"
+            alt="Card image cap"
+            title=""
+            style=""
+          />
+          <div class="card-body">
+            <h5 class="card-title">file 2</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+        <div class="card col-2">
+          <img
+            class="card-img-top"
+            src="https://icons-for-free.com/iconfiles/png/512/eps+file+format+pdf+icon-1320167140815183040.png"
+            alt="Card image cap"
+            title=""
+            style=""
+          />
+          <div class="card-body">
+            <h5 class="card-title">file 3</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
+        <div class="card col-2">
+          <img
+            class="card-img-top"
+            src="https://icons-for-free.com/iconfiles/png/512/excel+file+spreadsheet+table+xls+xls+icon+icon-1320167722079480642.png"
+            alt="Card image cap"
+            title=""
+            style=""
+          />
+          <div class="card-body">
+            <h5 class="card-title">file 4</h5>
+            <p class="card-text"></p>
+          </div>
+        </div>
       </div>
     </div>
     <div
@@ -53,12 +107,24 @@
 <style></style>
 
 <script>
+import "quill/dist/quill.core.css";
+import "quill/dist/quill.snow.css";
+import "quill/dist/quill.bubble.css";
+
+import { quillEditor } from "vue-quill-editor";
+
 export default {
+  name: "postContent",
+  components: {
+    quillEditor,
+  },
   props: ["post"],
   data: function() {
     return {
-      message: "I'm from a component",
-      count: 0,
+      editorOptions: {
+        theme: "bubble",
+        readOnly: true,
+      },
     };
   },
   created: function() {},

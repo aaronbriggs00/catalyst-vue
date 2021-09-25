@@ -1,25 +1,109 @@
 <template>
   <div class="posts-new">
-    <h1>post create page</h1>
-    <div>title: <input v-model="postTitle" /></div>
-    <div>
-      content:
-      <textarea v-model="postText" id="" cols="30" rows="10"></textarea>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8 input-group input-group-lg">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-lg">Title</span>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          v-model="postTitle"
+          aria-label="Sizing example input"
+          aria-describedby="inputGroup-sizing-lg"
+        />
+      </div>
     </div>
-    <button v-on:click="apiPost()">submit</button>
-    <button v-on:click="testButton()">test</button>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <text-editor ref="editorChild" />
+    </div>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="box shadow-sm border rounded bg-white mb-3 col-sm-8">
+        Attachments
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="customFile" />
+          <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+        <div class="row">
+          <div class="card col-2">
+            <img
+              class="card-img-top"
+              src="https://icons-for-free.com/iconfiles/png/512/eps+file+format+pdf+icon-1320167140815183040.png"
+              alt="Card image cap"
+              title=""
+              style=""
+            />
+            <div class="card-body">
+              <h5 class="card-title">file 1</h5>
+              <p class="card-text"></p>
+            </div>
+          </div>
+          <div class="card col-2">
+            <img
+              class="card-img-top"
+              src="https://icons-for-free.com/iconfiles/png/512/eps+file+format+pdf+icon-1320167140815183040.png"
+              alt="Card image cap"
+              title=""
+              style=""
+            />
+            <div class="card-body">
+              <h5 class="card-title">file 2</h5>
+              <p class="card-text"></p>
+            </div>
+          </div>
+          <div class="card col-2">
+            <img
+              class="card-img-top"
+              src="https://icons-for-free.com/iconfiles/png/512/eps+file+format+pdf+icon-1320167140815183040.png"
+              alt="Card image cap"
+              title=""
+              style=""
+            />
+            <div class="card-body">
+              <h5 class="card-title">file 3</h5>
+              <p class="card-text"></p>
+            </div>
+          </div>
+          <div class="card col-2">
+            <img
+              class="card-img-top"
+              src="https://icons-for-free.com/iconfiles/png/512/excel+file+spreadsheet+table+xls+xls+icon+icon-1320167722079480642.png"
+              alt="Card image cap"
+              title=""
+              style=""
+            />
+            <div class="card-body">
+              <h5 class="card-title">file 4</h5>
+              <p class="card-text"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <button v-on:click="apiPost()" type="button" class="btn btn-secondary">
+          submit
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import TextEditor from "../../components/TextEditor";
 
 export default {
+  components: { TextEditor },
   data: function() {
     return {
       postTitle: null,
       postText: null,
-      message: "Welcome to a post",
       post: [],
       //HARDCODED TRANSLATION OF BOARD TITLE TO ID
       boardIdLookup: {
@@ -43,7 +127,7 @@ export default {
     apiPost: function() {
       var formData = new FormData();
       formData.append("title", this.postTitle);
-      formData.append("text", this.postText);
+      formData.append("text", this.$refs["editorChild"].content);
       formData.append(
         "board_id",
         this.boardIdLookup[this.$route.params.boardTitle.toLowerCase()]

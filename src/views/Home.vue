@@ -8,9 +8,9 @@
         <div class="box shadow-sm border rounded bg-white mb-3">
           <div class="box-title p-3 d-flex align-items-top">
             <h6 class="m-0">Recent</h6>
-            <h6 class="ml-1">Hot</h6>
-            <h6 class="ml-1">Top</h6>
-            <h6 class="ml-1">Popular</h6>
+            <h6 class="ml-2">Hot</h6>
+            <h6 class="ml-2">Top</h6>
+            <h6 class="ml-2">Popular</h6>
           </div>
           <div class="box-body p-0"></div>
         </div>
@@ -48,7 +48,7 @@ export default {
     if (this.$parent.isLoggedIn()) {
       this.apiCall();
     } else {
-      this.message = "not logged in";
+      window.location.href = "https://welcome.catalyst56.com/";
     }
   },
   methods: {

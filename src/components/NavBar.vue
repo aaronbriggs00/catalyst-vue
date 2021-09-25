@@ -3,11 +3,7 @@
     <nav class="navbar navbar-expand navbar-dark bg-dark osahan-nav-top p-0">
       <div class="container">
         <router-link to="/">
-          <a class="navbar-brand mr-2"
-            ><img
-              src="https://i.pinimg.com/736x/91/4d/e6/914de662ac57138cda4a401ff37b444e.jpg  "
-              alt=""
-            /> </a
+          <a class="navbar-brand mr-2"><i class="feather-home mr-2"></i></a
         ></router-link>
         <!-- search box -->
         <form
@@ -67,7 +63,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <router-link to="/jobs">
+            <router-link to="/wip">
               <a class="nav-link"
                 ><i class="feather-briefcase mr-2"></i
                 ><span class="d-none d-lg-inline">Jobs</span></a
@@ -83,7 +79,7 @@
             >
           </li>
           <li class="nav-item">
-            <router-link to="/connection">
+            <router-link to="/wip">
               <a class="nav-link"
                 ><i class="feather-users mr-2"></i
                 ><span class="d-none d-lg-inline">Connection</span></a

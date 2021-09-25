@@ -10,12 +10,13 @@ import Login from "../views/UserAuth/Login.vue";
 import Logout from "../views/UserAuth/Logout.vue";
 import Profile from "../views/Profile/Profile.vue";
 import ProfileEdit from "../views/Profile/ProfileEdit.vue";
+import ComingSoon from "../views/ComingSoon.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/home",
+    path: "/",
     name: "Home",
     component: Home,
   },
@@ -66,6 +67,11 @@ const routes = [
     path: "/users/:id/edit",
     name: "profile-edit",
     component: ProfileEdit,
+  },
+  {
+    path: "/wip",
+    name: "soon",
+    component: ComingSoon,
   },
   //EndProfile
   {
